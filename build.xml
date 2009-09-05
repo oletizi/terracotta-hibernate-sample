@@ -1,0 +1,26 @@
+<project name="terracotta-hibernate-sample" default="compile" basedir=".">
+  <property name="src" location="src/main/java"/>
+  <property name="build" location="target"/>
+  <property name="dist"  location="dist"/>
+  
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}">
+      <classpath>
+	<pathelement path="${classpath}"/>
+	<fileset dir="lib">
+	  <include name="**/*.jar"/>
+	</fileset>
+	<pathelement location="target"/>
+      </classpath>
+    </javac>
+  </target>
+</project>
