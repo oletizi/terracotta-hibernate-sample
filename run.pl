@@ -27,13 +27,13 @@ print usage() and exit(1) unless $command;
 print "my command: $command\n";
 
 if ($commands{$command}) {
-  runJava($commands{$command}, @args);
+  runJava($command, $commands{$command}, @args);
 } else  {
   print usage() and exit(1);
 }
 
 sub runJava {
-  my ($class, @args) = @_;
+  my ($command, $class, @args) = @_;
   my $argstring = join(' ', @args);
   my $cmd = "$JAVA $JAVA_OPTS -cp $CLASSPATH $class $argstring";
   print "executing $cmd...\n";

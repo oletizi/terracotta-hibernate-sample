@@ -1,5 +1,5 @@
 <project name="terracotta-hibernate-sample" default="compile" basedir=".">
-  <property name="src" location="src/main/java"/>
+  <property name="src" location="src/main"/>
   <property name="build" location="target/classes"/>
   <property name="dist"  location="target"/>
   
@@ -14,7 +14,7 @@
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}">
+    <javac srcdir="${src}/java" destdir="${build}">
       <classpath>
 	<pathelement path="${classpath}"/>
 	<fileset dir="lib">
@@ -28,8 +28,18 @@
   <target name="dist.jar" depends="compile">
     <jar destfile="${dist}/terracotta-hibernate-sample.jar">
       <fileset dir="${build}"/>
-      <fileset dir="${src}/resources"/>
+      <fileset dir="${src}/java/resources"/>
     </jar>
+  </target>
+
+
+  <target name="dist.war" depends="compile">
+    <war destfile="${dist}/terracotta-hibernate-sample.war" webxml="${src}/webapp/WEB-INF/web.xml">
+      <fileset dir="${src}/webapp"/>
+      <lib dir="lib"/>
+      <classes dir="${build}"/>
+      <classes dir="${src}/java/resources"/>
+    </war>
   </target>
 
   <target name="clean"
