@@ -1,7 +1,7 @@
 <project name="terracotta-hibernate-sample" default="compile" basedir=".">
   <property name="src" location="src/main/java"/>
-  <property name="build" location="target"/>
-  <property name="dist"  location="dist"/>
+  <property name="build" location="target/classes"/>
+  <property name="dist"  location="target"/>
   
 
   <target name="init">
@@ -10,6 +10,7 @@
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
   </target>
+
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
@@ -19,8 +20,23 @@
 	<fileset dir="lib">
 	  <include name="**/*.jar"/>
 	</fileset>
-	<pathelement location="target"/>
+	<pathelement location="target/"/>
       </classpath>
     </javac>
   </target>
+
+  <target name="dist.jar" depends="compile">
+    <jar destfile="${dist}/terracotta-hibernate-sample.jar">
+      <fileset dir="${build}"/>
+      <fileset dir="${src}/resources"/>
+    </jar>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
 </project>
