@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terracotta-hibernate-cache-configuration>
+
+  <cache>
+    <region-name>org.hibernate.tutorial.domain.Event</region-name>
+
+    <configuration>
+      <time-to-idle-seconds>100</time-to-idle-seconds>
+      <time-to-live-seconds>300</time-to-live-seconds>
+    </configuration>
+  </cache>
+
+</terracotta-hibernate-cache-configuration>

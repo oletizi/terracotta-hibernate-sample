@@ -1,8 +1,11 @@
-package org.terracotta.tutorial;
+package org.terracotta.hibernate.sample;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * This class is just to test that the DB connection is set up properly.
+ */
 public class JDBCTest {
     public static void main(String[] args) throws Exception {
 	System.out.println("Loading HSQLDB JDBC driver...");

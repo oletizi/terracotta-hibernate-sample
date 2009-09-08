@@ -16,7 +16,7 @@ unless (-e $BUILD_JAR) {
 my $CLASSPATH = configureClasspath(qw/antlr-2.7.6.jar commons-collections-3.1.jar dom4j-1.6.1.jar ehcache-1.6.2.jar hibernate3.jar hsqldb.jar javassist-3.9.0.GA.jar jta-1.1.jar log4j-1.2.15.jar slf4j-api-1.5.8.jar slf4j-log4j12-1.5.8.jar/);
 
 my %commands = (
-		'jdbc' => "org.terracotta.tutorial.JDBCTest",
+		'jdbc' => "org.terracotta.hibernate.sample.JDBCTest",
 		'hibernate' => "org.hibernate.tutorial.EventManager"
 	       );
 
